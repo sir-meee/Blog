@@ -23,7 +23,8 @@ class Blogpost(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    posts = Blogpost.query.all()
+    return render_template('index.html', posts=posts)
 
 @app.route('/about')
 def about():
