@@ -1,10 +1,16 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 
 # Initializing Flask Extensions
 bootstrap = Bootstrap
 
 app = Flask(__name__)
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:////home/sammy/Documents/Python/Flask/Blog/blog.db'
+
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
