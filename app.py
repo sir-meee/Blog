@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 # Initializing Flask Extensions
 bootstrap = Bootstrap
@@ -28,9 +29,10 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/post')
-def post():
-    return render_template('post.html')
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post = Blogpost.query.filter_by(id=post_id).one()
+    return render_template('post.html', post=post)
 
 @app.route('/add')
 def add():
@@ -44,6 +46,9 @@ def addpost():
     content = request.form['content']
 
     post = Blogpost(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
+
+    db.session.add(post)
+    db.session.commit()  
 
     return redirect(url_for('index'))
 
