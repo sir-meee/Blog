@@ -25,13 +25,13 @@ class RegisterForm(FlaskForm):
 def index():/home/sammy/Documents/Python/Flask
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
       
     return render_template('login.html', form=form)
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = RegisterForm()
     return render_template('signup.html', form=form)
