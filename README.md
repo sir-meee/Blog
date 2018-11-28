@@ -13,13 +13,11 @@
  To access this app on your local machine:
  1) Clone the repo
  2) Create a virtual environment then pip install requirements.txt
- 3) Create a start.sh file and in it export your secret key, mail username and password and add "python manage.py server" 
- 4) On your terminal run: chmod a+x start.sh
- 5) Then to run type :./start.sh 
+ 3) Run the server using; python3 app.py
  
 
  ## Known Bugs
- When registering, you may get an error 500. Simply login with the same credentials and you will be able to access the site.
+ Registration and login forms are not showing.
 There are no bugs. Incase of any, contact me at sammymbevi@gmail.com
 
  ### Technologies used
